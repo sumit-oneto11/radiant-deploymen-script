@@ -32,7 +32,7 @@ contract RadiantOFT is OFTV2, Pausable {
 	event TreasuryUpdated(address indexed treasury);
 
 	/**
-	 * @notice Create RadiantOFT
+	 * @notice Create AlphaOFT
 	 * @param _tokenName token name
 	 * @param _symbol token symbol
 	 * @param _endpoint LZ endpoint for network

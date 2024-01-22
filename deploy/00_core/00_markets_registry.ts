@@ -25,6 +25,14 @@ const func: DeployFunction = async function ({
       ...COMMON_DEPLOY_PARAMS,
     }
   );
+  
+  //console.log(0.00000000001541*6812938202258); 
+  
+  //High=0.0000000002042
+  //Low=0.0000000000002793
+    
+  //console.log("Buy", (100/0.0000000000002793));
+  //console.log("Sell", (358037952022914.44*0.0000000001042));
 
   const registryInstance = (
     (await hre.ethers.getContractAt(

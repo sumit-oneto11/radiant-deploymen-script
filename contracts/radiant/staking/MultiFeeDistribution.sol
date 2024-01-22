@@ -188,7 +188,7 @@ contract MultiFeeDistribution is
      * @param _lockDuration lock duration
      */
     function initialize(
-        address _rdntToken,
+        address _rdntToken, 
         address _lockZap,
         address _dao,
         address _userlist,

@@ -95,20 +95,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     args: [addressesProviderArtifact.address],
     ...COMMON_DEPLOY_PARAMS,
   });
-  const currentProtocolDataProvider =
-    await addressesProviderInstance.getPoolDataProvider();
-
-  // Set the ProtocolDataProvider if is not already set at addresses provider
-  if (
-    !isEqualAddress(protocolDataProvider.address, currentProtocolDataProvider)
-  ) {
-    await waitForTx(
-      await addressesProviderInstance.setPoolDataProvider(
-        protocolDataProvider.address
-      )
-    );
-  }
-
+  
   return true;
 };
 

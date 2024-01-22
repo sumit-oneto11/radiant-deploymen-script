@@ -109,7 +109,7 @@ export const getPoolConfiguratorProxy = async (
   address?: tEthereumAddress
 ): Promise<PoolConfigurator> =>
   getContract(
-    "PoolConfigurator",
+    "LendingPoolConfigurator",
     address || (await hre.deployments.get(POOL_CONFIGURATOR_PROXY_ID)).address
   );
 
@@ -139,7 +139,7 @@ export const getFlashLoanLogic = async (
 
 export const getPool = async (address?: tEthereumAddress): Promise<Pool> =>
   getContract(
-    "Pool",
+    "LendingPool",
     address || (await hre.deployments.get(POOL_PROXY_ID)).address
   );
 
@@ -234,24 +234,17 @@ export const getMockInitializableImpleV2 = async (
   getContract("MockInitializableImpleV2", address);
 
 export const getPoolLibraries = async (): Promise<Libraries> => {
-  const supplyLibraryArtifact = await hre.deployments.get("SupplyLogic");
-  const borrowLibraryArtifact = await hre.deployments.get("BorrowLogic");
-  const liquidationLibraryArtifact = await hre.deployments.get(
-    "LiquidationLogic"
+  const reserveLibraryArtifact = await hre.deployments.get("ReserveLogic");
+  const genericLogicLibraryArtifact = await hre.deployments.get("GenericLogic");
+  const validationLibraryArtifact = await hre.deployments.get(
+    "ValidationLogic"
   );
-  const eModeLibraryArtifact = await hre.deployments.get("EModeLogic");
-  const bridgeLibraryArtifact = await hre.deployments.get("BridgeLogic");
-  const flashLoanLogicArtifact = await hre.deployments.get("FlashLoanLogic");
-  const poolLogicArtifact = await hre.deployments.get("PoolLogic");
+  
 
   return {
-    LiquidationLogic: liquidationLibraryArtifact.address,
-    SupplyLogic: supplyLibraryArtifact.address,
-    EModeLogic: eModeLibraryArtifact.address,
-    FlashLoanLogic: flashLoanLogicArtifact.address,
-    BorrowLogic: borrowLibraryArtifact.address,
-    BridgeLogic: bridgeLibraryArtifact.address,
-    PoolLogic: poolLogicArtifact.address,
+    ReserveLogic: reserveLibraryArtifact.address,
+    GenericLogic: genericLogicLibraryArtifact.address,  
+    ValidationLogic: validationLibraryArtifact.address,
   };
 };
 
